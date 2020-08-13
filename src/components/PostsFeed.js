@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { getPosts } from "../store/feed/selectors";
 import { fetchNext5Posts } from "../store/feed/actions";
+import { Link } from "react-router-dom";
 
 export default function PostsFeed() {
   // const [data, setData] = useState({
@@ -49,7 +50,9 @@ export default function PostsFeed() {
         return (
           <ul key={i}>
             <li>
-              <strong>{post.title}</strong>
+              <strong>
+                <Link to={`/post/${post.id}`}>{post.title}</Link>
+              </strong>
             </li>
             <li>
               <ul>
