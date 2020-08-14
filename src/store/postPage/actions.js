@@ -1,11 +1,15 @@
 // src/store/postPage/actions.js
 import axios from "axios";
+import { API_URL } from "../../config";
 
-const API_URL = `https://codaisseur-coders-network.herokuapp.com`;
 export const FETCH_POSTS = "FETCH_POSTS";
-// export function startLoadingPost() {
-//   // TODO
-// }
+export const START_LOADING = "START_LOADING";
+
+export function startLoadingPost() {
+  return {
+    type: START_LOADING,
+  };
+}
 
 export function postFullyFetched(postData) {
   console.log("LOL", postData);
@@ -18,7 +22,7 @@ export function postFullyFetched(postData) {
 export function fetchPost(id) {
   console.log("do you work");
   return async function thunk(dispatch, getState) {
-    // dispatch(startLoadingPost());
+    dispatch(startLoadingPost());
 
     const [postResponse, commentsResponse] = await Promise.all([
       axios.get(`${API_URL}/posts/${id}`),
